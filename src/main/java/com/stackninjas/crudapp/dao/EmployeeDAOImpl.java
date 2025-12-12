@@ -85,13 +85,12 @@ public class EmployeeDAOImpl implements EmployeeDAO{
             PreparedStatement stmt = connection.prepareStatement(GET_ALL_SQL);
             ResultSet rs = stmt.executeQuery()){
             while (rs.next()){
-                Employee employee = new Employee(
+                employeeList.add(new Employee(
                         rs.getInt("name"),
                         rs.getString("name"),
                         rs.getString("salary"),
-                        rs.getString("Department")
+                        rs.getString("Department"))
                 );
-                employeeList.add(employee);
             }
         }catch (SQLException sqle){
             throw new EmployeeDAOException("Unable to Fetch Record",sqle);
